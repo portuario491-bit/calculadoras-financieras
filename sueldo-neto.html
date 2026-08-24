@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calculadora de sueldo neto España 2026 | Bruto a neto | ClaroCalc</title>
+<meta name="description" content="Calcula tu salario neto mensual y anual a partir del bruto, con una estimación de IRPF y Seguridad Social. Gratis, sin registro, resultado al instante.">
+<link rel="canonical" href="https://clarocalc.example/sueldo-neto.html">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Calculadora de sueldo neto España 2026 | ClaroCalc">
+<meta property="og:description" content="De salario bruto a neto mensual, con IRPF y Seguridad Social estimados.">
+<meta property="og:image" content="assets/img/og-image.png">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css?v=20260824">
+<!-- TODO (propietario del sitio): al activar Google AdSense, añade aquí tu gestor de
+     consentimiento de cookies (CMP) antes de cargar cualquier script de anuncios. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Calculadora de sueldo neto — ClaroCalc",
+  "description": "Estima tu salario neto mensual y anual a partir del bruto, con IRPF y Seguridad Social aproximados (España).",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any (navegador web)",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+  "url": "https://clarocalc.example/sueldo-neto.html"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "¿Este cálculo de nómina es oficial?", "acceptedAnswer": { "@type": "Answer", "text": "No. Es una estimación orientativa basada en tramos generales de IRPF y en el tipo de cotización a la Seguridad Social del trabajador. Tu nómina real puede variar por tu tipo de contrato, tus deducciones específicas, tus pagas extra y la normativa vigente de tu comunidad." } },
+    { "@type": "Question", "name": "¿Por qué influye la comunidad autónoma?", "acceptedAnswer": { "@type": "Answer", "text": "Porque una parte del IRPF es autonómica y cada comunidad aprueba sus propios tramos. Esta calculadora aplica un ajuste orientativo, no la tabla oficial exacta de cada comunidad." } },
+    { "@type": "Question", "name": "¿Qué incluye la Seguridad Social que se descuenta?", "acceptedAnswer": { "@type": "Answer", "text": "La aportación del trabajador a contingencias comunes, desempleo y formación profesional, aplicada hasta la base máxima de cotización." } },
+    { "@type": "Question", "name": "¿Por qué mi nómina real difiere de esta estimación?", "acceptedAnswer": { "@type": "Answer", "text": "Porque hay factores que esta calculadora no conoce: retribución en especie, planes de pensiones, embargos, situación familiar detallada, tipo de contrato o convenio colectivo específico." } }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#calculadora">Ir a la calculadora</a>
+
+<header class="site-header">
+  <div class="container-wide header-row">
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true">◆</span>
+      <span class="brand-name">ClaroCalc</span>
+    </a>
+    <nav class="header-nav" aria-label="Calculadoras">
+      <a href="hipoteca.html">Hipoteca</a>
+      <a href="interes-compuesto.html">Interés compuesto</a>
+      <a href="prestamo-personal.html">Préstamo</a>
+      <a href="jubilacion.html">Jubilación</a>
+      <a href="sueldo-neto.html" class="is-current">Sueldo neto</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="calc-hero container-wide" id="calculadora">
+    <p class="breadcrumb"><a href="index.html">Calculadoras</a> / Sueldo neto</p>
+    <h1>Calculadora de sueldo neto España 2026</h1>
+    <p class="hero-sub">De salario bruto anual a neto mensual, con una estimación de retenciones de IRPF y Seguridad Social.</p>
+  </section>
+
+  <section class="container-wide">
+    <div class="tool-card">
+      <p class="warn-pill is-note">⚠ Estimación orientativa, no es un cálculo fiscal oficial ni asesoramiento fiscal. Los tramos y mínimos son aproximados. <!-- TODO: revisar tramos IRPF y tipos de cotización 2026 --></p>
+      <div class="calc-layout">
+        <div class="calc-form">
+          <div class="field">
+            <label class="field-label" for="salarioBruto">Salario bruto anual</label>
+            <div class="input-suffix-wrap">
+              <input type="number" id="salarioBruto" class="text-input" value="28000" min="1000" max="500000" step="500">
+              <span class="input-suffix">€</span>
+            </div>
+          </div>
+          <div class="field">
+            <span class="field-label">Situación personal</span>
+            <div class="segmented" id="situacionPersonal" role="group" aria-label="Situación personal">
+              <button type="button" class="is-active" data-situacion="soltero">Soltero/a</button>
+              <button type="button" data-situacion="casado">Casado/a</button>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label class="field-label" for="numHijos">Número de hijos</label>
+              <select id="numHijos" class="text-input">
+                <option value="0" selected>0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3 o más</option>
+              </select>
+            </div>
+            <div class="field">
+              <label class="field-label" for="comunidad">Comunidad autónoma</label>
+              <select id="comunidad" class="text-input">
+                <option value="madrid">Madrid</option>
+                <option value="cataluna">Cataluña</option>
+                <option value="andalucia">Andalucía</option>
+                <option value="valencia" selected>C. Valenciana</option>
+                <option value="galicia">Galicia</option>
+                <option value="castillayleon">Castilla y León</option>
+                <option value="otras">Otras / promedio</option>
+              </select>
+            </div>
+          </div>
+          <p class="error-msg" id="errorMsg">Revisa los valores: el salario bruto debe ser un número positivo.</p>
+        </div>
+
+        <div class="result-panel">
+          <div class="result-grid">
+            <div class="result-stat is-primary">
+              <div class="stat-label">Neto mensual (x12)</div>
+              <div class="stat-value" id="outNetoMensual">—</div>
+            </div>
+            <div class="result-stat">
+              <div class="stat-label">Neto anual</div>
+              <div class="stat-value" id="outNetoAnual">—</div>
+            </div>
+          </div>
+          <div class="result-grid">
+            <div class="result-stat is-muted">
+              <div class="stat-label">Retención IRPF estimada</div>
+              <div class="stat-value" id="outIrpf">—</div>
+            </div>
+            <div class="result-stat is-muted">
+              <div class="stat-label">Seguridad Social (trabajador)</div>
+              <div class="stat-value" id="outSS">—</div>
+            </div>
+          </div>
+          <p class="field-hint">El neto mensual se calcula dividiendo el neto anual entre 12 (pagas prorrateadas). Si tu empresa paga 14 pagas sin prorratear, tu neto mensual ordinario será distinto.</p>
+        </div>
+      </div>
+      <p class="privacy-badge">🔒 Todo el cálculo se hace en tu navegador — tus datos no se envían a ningún servidor.</p>
+    </div>
+  </section>
+
+  <div class="ad-slot container-wide" data-ad-slot>
+    <span class="ad-label">ANUNCIO</span>
+    <!-- PEGA AQUÍ TU CÓDIGO DE ADSENSE -->
+  </div>
+
+  <section class="explain-section container-wide">
+    <h2>Cómo se calcula el sueldo neto en España</h2>
+    <div class="explain-copy">
+      <p>Del salario bruto se restan dos cosas: la <strong>cotización a la Seguridad Social</strong> que paga el trabajador (contingencias comunes, desempleo y formación profesional, sobre el bruto hasta un tope máximo) y la <strong>retención de IRPF</strong>, que es progresiva: cuanto más ganas, mayor es el porcentaje que se aplica sobre cada tramo adicional de tu sueldo.</p>
+      <div class="formula-box">Neto anual = Bruto − Seguridad Social − IRPF</div>
+      <p>El IRPF no se aplica sobre todo el bruto: primero se descuentan la Seguridad Social, unos gastos deducibles estándar y el <strong>mínimo personal y familiar</strong> (que aumenta si estás casado/a o tienes hijos a cargo), y sobre lo que queda se aplican los tramos progresivos. La comunidad autónoma aplica un ajuste adicional, porque una parte del IRPF es autonómica.</p>
+      <p>Esta calculadora usa tramos y mínimos <strong>aproximados</strong> para dar una referencia rápida — no sustituye el cálculo real de tu nómina ni una consulta fiscal profesional.</p>
+    </div>
+  </section>
+
+  <div class="ad-slot container-wide" data-ad-slot>
+    <span class="ad-label">ANUNCIO</span>
+    <!-- PEGA AQUÍ TU CÓDIGO DE ADSENSE -->
+  </div>
+
+  <section class="faq-section container-wide">
+    <h2>Preguntas frecuentes sobre el sueldo neto</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>¿Este cálculo de nómina es oficial?</summary>
+        <p>No. Es una estimación orientativa basada en tramos generales de IRPF y en el tipo de cotización a la Seguridad Social del trabajador. Tu nómina real puede variar por tu tipo de contrato, tus deducciones específicas, tus pagas extra y la normativa vigente de tu comunidad.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Por qué influye la comunidad autónoma?</summary>
+        <p>Porque una parte del IRPF es autonómica y cada comunidad aprueba sus propios tramos. Esta calculadora aplica un ajuste orientativo, no la tabla oficial exacta de cada comunidad.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Qué incluye la Seguridad Social que se descuenta?</summary>
+        <p>La aportación del trabajador a contingencias comunes, desempleo y formación profesional, aplicada hasta la base máxima de cotización.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Por qué mi nómina real difiere de esta estimación?</summary>
+        <p>Porque hay factores que esta calculadora no conoce: retribución en especie, planes de pensiones, embargos, situación familiar detallada, tipo de contrato o convenio colectivo específico.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="more-section container-wide">
+    <h2>Más calculadoras</h2>
+    <div class="more-grid">
+      <a class="more-card" href="hipoteca.html"><span class="card-icon" aria-hidden="true">🏠</span><h3>Hipoteca</h3><p>Cuota mensual y cuadro de amortización.</p></a>
+      <a class="more-card" href="interes-compuesto.html"><span class="card-icon" aria-hidden="true">📈</span><h3>Interés compuesto</h3><p>Cuánto crece tu dinero con aportaciones periódicas.</p></a>
+      <a class="more-card" href="prestamo-personal.html"><span class="card-icon" aria-hidden="true">💳</span><h3>Préstamo personal</h3><p>Cuota, coste total y TAE aproximada.</p></a>
+      <a class="more-card" href="jubilacion.html"><span class="card-icon" aria-hidden="true">🌅</span><h3>Jubilación</h3><p>Cuánto capital puedes reunir de aquí a jubilarte.</p></a>
+    </div>
+  </section>
+</main>
+
+<aside class="corner-toast" id="cornerAd" hidden>
+  <span class="ad-label">ANUNCIO</span>
+  <button type="button" class="corner-toast-close" id="cornerAdClose" aria-label="Cerrar anuncio">✕</button>
+</aside>
+
+<dialog id="adDialog" class="ad-dialog">
+  <div class="ad-dialog-body">
+    <button type="button" class="ad-dialog-close" id="adDialogClose" aria-label="Cerrar">✕</button>
+    <span class="ad-label">ANUNCIO</span>
+    <!-- PEGA AQUÍ TU CÓDIGO DE ADSENSE -->
+    <button type="button" class="btn ad-dialog-btn" id="adDialogCloseBtn">Cerrar y seguir</button>
+  </div>
+</dialog>
+
+<footer class="site-footer">
+  <div class="container-wide">
+    <div class="footer-cols">
+      <div>
+        <h4>ClaroCalc</h4>
+        <p>Calculadoras financieras claras, gratis y sin registro. Todo el cálculo ocurre en tu navegador.</p>
+      </div>
+      <div>
+        <h4>Calculadoras</h4>
+        <ul>
+          <li><a href="hipoteca.html">Hipoteca</a></li>
+          <li><a href="interes-compuesto.html">Interés compuesto</a></li>
+          <li><a href="prestamo-personal.html">Préstamo personal</a></li>
+          <li><a href="jubilacion.html">Jubilación</a></li>
+          <li><a href="sueldo-neto.html">Sueldo neto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacidad.html">Privacidad</a></li>
+          <li><a href="aviso-legal.html">Aviso legal</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="disclaimer-line">© 2026 ClaroCalc. Los resultados son estimaciones orientativas y no constituyen asesoramiento financiero, fiscal ni de inversión.</p>
+  </div>
+</footer>
+
+<script defer src="lib/manifest.js?v=20260824"></script>
+<script defer src="main.js?v=20260824"></script>
+<script defer src="calc-sueldo-neto.js?v=20260824"></script>
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calculadora de hipoteca online | Cuota y amortización | ClaroCalc</title>
+<meta name="description" content="Calcula la cuota mensual de tu hipoteca, el total de intereses y el cuadro de amortización año a año. Gratis, sin registro, resultado al instante.">
+<link rel="canonical" href="https://clarocalc.example/hipoteca.html">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Calculadora de hipoteca online | ClaroCalc">
+<meta property="og:description" content="Cuota mensual, intereses totales y cuadro de amortización de tu hipoteca, al instante.">
+<meta property="og:image" content="assets/img/og-image.png">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css?v=20260824">
+<!-- TODO (propietario del sitio): al activar Google AdSense, añade aquí tu gestor de
+     consentimiento de cookies (CMP) antes de cargar cualquier script de anuncios. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Calculadora de hipoteca — ClaroCalc",
+  "description": "Calcula la cuota mensual, el total de intereses y el cuadro de amortización de tu hipoteca.",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any (navegador web)",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+  "url": "https://clarocalc.example/hipoteca.html"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "¿Cómo se calcula la cuota mensual de una hipoteca?", "acceptedAnswer": { "@type": "Answer", "text": "Con el sistema de amortización francés: la cuota es constante durante toda la hipoteca, pero al principio pagas más intereses y poco capital, y al final casi todo es capital." } },
+    { "@type": "Question", "name": "¿Qué diferencia hay entre hipoteca fija, variable y mixta?", "acceptedAnswer": { "@type": "Answer", "text": "En la fija el tipo de interés no cambia nunca. En la variable el tipo se revisa periódicamente según un índice (normalmente el euríbor). En la mixta hay un periodo inicial a tipo fijo y después pasa a variable." } },
+    { "@type": "Question", "name": "¿Esta calculadora incluye comisiones o seguros?", "acceptedAnswer": { "@type": "Answer", "text": "No. Calcula solo la cuota de capital e intereses según el tipo de interés que introduzcas. Comisiones de apertura, seguros vinculados y otros gastos no están incluidos." } },
+    { "@type": "Question", "name": "¿Qué es el cuadro de amortización?", "acceptedAnswer": { "@type": "Answer", "text": "Es el desglose año a año de cuánto pagas de capital y cuánto de intereses, y cuánto capital pendiente te queda por devolver." } }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#calculadora">Ir a la calculadora</a>
+
+<header class="site-header">
+  <div class="container-wide header-row">
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true">◆</span>
+      <span class="brand-name">ClaroCalc</span>
+    </a>
+    <nav class="header-nav" aria-label="Calculadoras">
+      <a href="hipoteca.html" class="is-current">Hipoteca</a>
+      <a href="interes-compuesto.html">Interés compuesto</a>
+      <a href="prestamo-personal.html">Préstamo</a>
+      <a href="jubilacion.html">Jubilación</a>
+      <a href="sueldo-neto.html">Sueldo neto</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="calc-hero container-wide" id="calculadora">
+    <p class="breadcrumb"><a href="index.html">Calculadoras</a> / Hipoteca</p>
+    <h1>Calculadora de hipoteca online</h1>
+    <p class="hero-sub">Introduce el importe, el interés y el plazo para ver al instante tu cuota mensual, el coste total y el cuadro de amortización.</p>
+  </section>
+
+  <section class="container-wide">
+    <div class="tool-card">
+      <div class="calc-layout">
+        <div class="calc-form">
+          <div class="field">
+            <label class="field-label" for="importe">Importe del préstamo</label>
+            <div class="input-suffix-wrap">
+              <input type="number" id="importe" class="text-input" value="150000" min="1000" max="2000000" step="1000">
+              <span class="input-suffix">€</span>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label class="field-label" for="interes">Tipo de interés anual</label>
+              <div class="input-suffix-wrap">
+                <input type="number" id="interes" class="text-input" value="3.2" min="0" max="15" step="0.05">
+                <span class="input-suffix">%</span>
+              </div>
+            </div>
+            <div class="field">
+              <label class="field-label" for="plazo">Plazo</label>
+              <div class="input-suffix-wrap">
+                <input type="number" id="plazo" class="text-input" value="25" min="1" max="40" step="1">
+                <span class="input-suffix">años</span>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <span class="field-label">Tipo de hipoteca</span>
+            <div class="segmented" id="tipoHipoteca" role="group" aria-label="Tipo de hipoteca">
+              <button type="button" class="is-active" data-tipo="fijo">Fija</button>
+              <button type="button" data-tipo="variable">Variable</button>
+              <button type="button" data-tipo="mixto">Mixta</button>
+            </div>
+            <p class="field-hint" id="tipoNote">A tipo fijo, el interés no cambia durante toda la hipoteca.</p>
+          </div>
+          <p class="error-msg" id="errorMsg">Revisa los valores: deben ser números positivos dentro de un rango razonable.</p>
+        </div>
+
+        <div class="result-panel">
+          <div class="result-grid cols-3">
+            <div class="result-stat is-primary">
+              <div class="stat-label">Cuota mensual</div>
+              <div class="stat-value" id="outCuota">—</div>
+            </div>
+            <div class="result-stat">
+              <div class="stat-label">Total a pagar</div>
+              <div class="stat-value" id="outTotal">—</div>
+            </div>
+            <div class="result-stat">
+              <div class="stat-label">Total intereses</div>
+              <div class="stat-value" id="outIntereses">—</div>
+            </div>
+          </div>
+
+          <div class="chart-frame">
+            <canvas id="chartHipoteca" width="600" height="220" role="img" aria-label="Gráfico de capital pendiente frente a intereses acumulados a lo largo de los años"></canvas>
+            <div class="chart-legend">
+              <span><i class="legend-dot" style="background:#0f6b5c"></i> Capital pendiente</span>
+              <span><i class="legend-dot" style="background:#c17a1f"></i> Intereses acumulados</span>
+            </div>
+          </div>
+
+          <div class="amort-table-wrap">
+            <table class="amort-table" id="amortTable">
+              <thead>
+                <tr><th>Año</th><th>Cuota anual</th><th>Capital</th><th>Intereses</th><th>Pendiente</th></tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <p class="privacy-badge">🔒 Todo el cálculo se hace en tu navegador — tus datos no se envían a ningún servidor.</p>
+    </div>
+  </section>
+
+  <div class="ad-slot container-wide" data-ad-slot>
+    <span class="ad-label">ANUNCIO</span>
+    <!-- PEGA AQUÍ TU CÓDIGO DE ADSENSE -->
+  </div>
+
+  <section class="explain-section container-wide">
+    <h2>Cómo se calcula la cuota de una hipoteca</h2>
+    <div class="explain-copy">
+      <p>Las hipotecas en España se calculan casi siempre con el <strong>sistema de amortización francés</strong>: la cuota mensual es siempre la misma durante toda la vida del préstamo, pero la proporción de capital e intereses que contiene va cambiando. Al principio pagas sobre todo intereses; al final, sobre todo capital.</p>
+      <div class="formula-box">cuota = P × r / (1 − (1 + r)<sup>−n</sup>)</div>
+      <p>Donde <strong>P</strong> es el importe del préstamo, <strong>r</strong> es el tipo de interés mensual (el anual dividido entre 12 y entre 100) y <strong>n</strong> es el número total de cuotas (los años multiplicados por 12).</p>
+      <p>El <strong>total a pagar</strong> es la cuota multiplicada por el número de cuotas, y el <strong>total de intereses</strong> es esa cifra menos el importe prestado. El cuadro de amortización reparte, cuota a cuota, cuánto es capital y cuánto interés, hasta que el capital pendiente llega a cero.</p>
+    </div>
+  </section>
+
+  <div class="ad-slot container-wide" data-ad-slot>
+    <span class="ad-label">ANUNCIO</span>
+    <!-- PEGA AQUÍ TU CÓDIGO DE ADSENSE -->
+  </div>
+
+  <section class="faq-section container-wide">
+    <h2>Preguntas frecuentes sobre la hipoteca</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>¿Cómo se calcula la cuota mensual de una hipoteca?</summary>
+        <p>Con el sistema de amortización francés: la cuota es constante durante toda la hipoteca, pero al principio pagas más intereses y poco capital, y al final casi todo es capital.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Qué diferencia hay entre hipoteca fija, variable y mixta?</summary>
+        <p>En la fija el tipo de interés no cambia nunca. En la variable el tipo se revisa periódicamente según un índice (normalmente el euríbor). En la mixta hay un periodo inicial a tipo fijo y después pasa a variable.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Esta calculadora incluye comisiones o seguros?</summary>
+        <p>No. Calcula solo la cuota de capital e intereses según el tipo de interés que introduzcas. Comisiones de apertura, seguros vinculados y otros gastos no están incluidos.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Qué es el cuadro de amortización?</summary>
+        <p>Es el desglose año a año de cuánto pagas de capital y cuánto de intereses, y cuánto capital pendiente te queda por devolver.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Por qué en una hipoteca variable o mixta el cálculo es solo orientativo?</summary>
+        <p>Porque el tipo de interés puede subir o bajar con las revisiones futuras. La calculadora usa el tipo que introduzcas como si se mantuviera constante todo el plazo, a modo de referencia.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="more-section container-wide">
+    <h2>Más calculadoras</h2>
+    <div class="more-grid">
+      <a class="more-card" href="interes-compuesto.html"><span class="card-icon" aria-hidden="true">📈</span><h3>Interés compuesto</h3><p>Cuánto crece tu dinero con aportaciones periódicas.</p></a>
+      <a class="more-card" href="prestamo-personal.html"><span class="card-icon" aria-hidden="true">💳</span><h3>Préstamo personal</h3><p>Cuota, coste total y TAE aproximada.</p></a>
+      <a class="more-card" href="jubilacion.html"><span class="card-icon" aria-hidden="true">🌅</span><h3>Jubilación</h3><p>Cuánto capital puedes reunir de aquí a jubilarte.</p></a>
+      <a class="more-card" href="sueldo-neto.html"><span class="card-icon" aria-hidden="true">💶</span><h3>Sueldo neto</h3><p>De salario bruto a neto mensual, con IRPF y SS.</p></a>
+    </div>
+  </section>
+</main>
+
+<aside class="corner-toast" id="cornerAd" hidden>
+  <span class="ad-label">ANUNCIO</span>
+  <button type="button" class="corner-toast-close" id="cornerAdClose" aria-label="Cerrar anuncio">✕</button>
+</aside>
+
+<dialog id="adDialog" class="ad-dialog">
+  <div class="ad-dialog-body">
+    <button type="button" class="ad-dialog-close" id="adDialogClose" aria-label="Cerrar">✕</button>
+    <span class="ad-label">ANUNCIO</span>
+    <!-- PEGA AQUÍ TU CÓDIGO DE ADSENSE -->
+    <button type="button" class="btn ad-dialog-btn" id="adDialogCloseBtn">Cerrar y seguir</button>
+  </div>
+</dialog>
+
+<footer class="site-footer">
+  <div class="container-wide">
+    <div class="footer-cols">
+      <div>
+        <h4>ClaroCalc</h4>
+        <p>Calculadoras financieras claras, gratis y sin registro. Todo el cálculo ocurre en tu navegador.</p>
+      </div>
+      <div>
+        <h4>Calculadoras</h4>
+        <ul>
+          <li><a href="hipoteca.html">Hipoteca</a></li>
+          <li><a href="interes-compuesto.html">Interés compuesto</a></li>
+          <li><a href="prestamo-personal.html">Préstamo personal</a></li>
+          <li><a href="jubilacion.html">Jubilación</a></li>
+          <li><a href="sueldo-neto.html">Sueldo neto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacidad.html">Privacidad</a></li>
+          <li><a href="aviso-legal.html">Aviso legal</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="disclaimer-line">© 2026 ClaroCalc. Los resultados son estimaciones orientativas y no constituyen asesoramiento financiero, fiscal ni de inversión.</p>
+  </div>
+</footer>
+
+<script defer src="lib/manifest.js?v=20260824"></script>
+<script defer src="main.js?v=20260824"></script>
+<script defer src="chart.js?v=20260824"></script>
+<script defer src="calc-hipoteca.js?v=20260824"></script>
+</body>
+</html>

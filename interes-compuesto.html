@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calculadora de interés compuesto | Con aportaciones | ClaroCalc</title>
+<meta name="description" content="Calcula cuánto crece tu dinero con interés compuesto y aportaciones periódicas. Capital final, total aportado e intereses generados, al instante.">
+<link rel="canonical" href="https://clarocalc.example/interes-compuesto.html">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Calculadora de interés compuesto | ClaroCalc">
+<meta property="og:description" content="Cuánto crece tu dinero con aportaciones periódicas y capitalización mensual o anual.">
+<meta property="og:image" content="assets/img/og-image.png">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css?v=20260824">
+<!-- TODO (propietario del sitio): al activar Google AdSense, añade aquí tu gestor de
+     consentimiento de cookies (CMP) antes de cargar cualquier script de anuncios. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Calculadora de interés compuesto — ClaroCalc",
+  "description": "Calcula el crecimiento de un capital con aportaciones periódicas e interés compuesto.",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any (navegador web)",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+  "url": "https://clarocalc.example/interes-compuesto.html"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "¿Qué es el interés compuesto?", "acceptedAnswer": { "@type": "Answer", "text": "Es el interés que se calcula no solo sobre el capital inicial, sino también sobre los intereses ya generados en periodos anteriores. Por eso el crecimiento se acelera con el tiempo." } },
+    { "@type": "Question", "name": "¿Capitalización mensual o anual, cuál elijo?", "acceptedAnswer": { "@type": "Answer", "text": "La capitalización mensual genera algo más de rendimiento que la anual al mismo tipo nominal, porque los intereses se reinvierten más a menudo. Elige la que coincida con el producto que estás evaluando." } },
+    { "@type": "Question", "name": "¿Las aportaciones periódicas suman al final o durante todo el periodo?", "acceptedAnswer": { "@type": "Answer", "text": "Se suman en cada periodo de capitalización (cada mes o cada año, según elijas) y generan intereses desde ese momento hasta el final." } },
+    { "@type": "Question", "name": "¿Esta calculadora tiene en cuenta la inflación o los impuestos?", "acceptedAnswer": { "@type": "Answer", "text": "No. Calcula el crecimiento nominal del capital. La inflación reduce el poder adquisitivo real, y las ganancias suelen tributar al retirarlas — ninguna de las dos cosas está incluida." } }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#calculadora">Ir a la calculadora</a>
+
+<header class="site-header">
+  <div class="container-wide header-row">
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true">◆</span>
+      <span class="brand-name">ClaroCalc</span>
+    </a>
+    <nav class="header-nav" aria-label="Calculadoras">
+      <a href="hipoteca.html">Hipoteca</a>
+      <a href="interes-compuesto.html" class="is-current">Interés compuesto</a>
+      <a href="prestamo-personal.html">Préstamo</a>
+      <a href="jubilacion.html">Jubilación</a>
+      <a href="sueldo-neto.html">Sueldo neto</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="calc-hero container-wide" id="calculadora">
+    <p class="breadcrumb"><a href="index.html">Calculadoras</a> / Interés compuesto</p>
+    <h1>Calculadora de interés compuesto</h1>
+    <p class="hero-sub">Con capital inicial, aportaciones periódicas y el tipo de interés, calcula al instante cuánto puede crecer tu dinero.</p>
+  </section>
+
+  <section class="container-wide">
+    <div class="tool-card">
+      <div class="calc-layout">
+        <div class="calc-form">
+          <div class="field">
+            <label class="field-label" for="capitalInicial">Capital inicial</label>
+            <div class="input-suffix-wrap">
+              <input type="number" id="capitalInicial" class="text-input" value="5000" min="0" max="5000000" step="100">
+              <span class="input-suffix">€</span>
+            </div>
+          </div>
+          <div class="field">
+            <label class="field-label" for="aportacion">Aportación periódica</label>
+            <div class="input-suffix-wrap">
+              <input type="number" id="aportacion" class="text-input" value="150" min="0" max="50000" step="10">
+              <span class="input-suffix">€</span>
+            </div>
+            <p class="field-hint" id="aportacionHint">Se aporta cada mes (según la frecuencia elegida abajo).</p>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label class="field-label" for="interesCompuesto">Interés anual</label>
+              <div class="input-suffix-wrap">
+                <input type="number" id="interesCompuesto" class="text-input" value="6" min="0" max="25" step="0.1">
+                <span class="input-suffix">%</span>
+              </div>
+            </div>
+            <div class="field">
+              <label class="field-label" for="anios">Años</label>
+              <input type="number" id="anios" class="text-input" value="20" min="1" max="60" step="1">
+            </div>
+          </div>
+          <div class="field">
+            <span class="field-label">Frecuencia de capitalización</span>
+            <div class="segmented" id="frecuencia" role="group" aria-label="Frecuencia de capitalización">
+              <button type="button" class="is-active" data-freq="mensual">Mensual</button>
+              <button type="button" data-freq="anual">Anual</button>
+            </div>
+          </div>
+          <p class="error-msg" id="errorMsg">Revisa los valores: deben ser números positivos dentro de un rango razonable.</p>
+        </div>
+
+        <div class="result-panel">
+          <div class="result-grid cols-3">
+            <div class="result-stat is-primary">
+              <div class="stat-label">Capital final</div>
+              <div class="stat-value" id="outFinal">—</div>
+            </div>
+            <div class="result-stat">
+              <div class="stat-label">Total aportado</div>
+              <div class="stat-value" id="outAportado">—</div>
+            </div>
+            <div class="result-stat">
+              <div class="stat-label">Intereses generados</div>
+              <div class="stat-value" id="outIntereses">—</div>
+            </div>
+          </div>
+
+          <div class="chart-frame">
+            <canvas id="chartInteres" width="600" height="220" role="img" aria-label="Gráfico de crecimiento del capital frente al total aportado"></canvas>
+            <div class="chart-legend">
+              <span><i class="legend-dot" style="background:#0f6b5c"></i> Valor total</span>
+              <span><i class="legend-dot" style="background:#c17a1f"></i> Total aportado</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="privacy-badge">🔒 Todo el cálculo se hace en tu navegador — tus datos no se envían a ningún servidor.</p>
+    </div>
+  </section>
+
+  <div class="ad-slot container-wide" data-ad-slot>
+    <span class="ad-label">ANUNCIO</span>
+    <!-- PEGA AQUÍ TU CÓDIGO DE ADSENSE -->
+  </div>
+
+  <section class="explain-section container-wide">
+    <h2>Cómo se calcula el interés compuesto</h2>
+    <div class="explain-copy">
+      <p>El interés compuesto es el interés que se calcula sobre el capital inicial <strong>y también sobre los intereses ya acumulados</strong>. Es la diferencia con el interés simple, y por eso el crecimiento se acelera cuanto más tiempo pasa.</p>
+      <div class="formula-box">VF = C × (1 + r)<sup>n</sup> + A × ((1 + r)<sup>n</sup> − 1) / r</div>
+      <p>Donde <strong>C</strong> es el capital inicial, <strong>A</strong> la aportación periódica, <strong>r</strong> el tipo de interés de cada periodo (el anual dividido entre 12 si es mensual, o tal cual si es anual) y <strong>n</strong> el número total de periodos.</p>
+      <p>El <strong>total aportado</strong> es la suma del capital inicial más todas las aportaciones. Los <strong>intereses generados</strong> son la diferencia entre el capital final y ese total aportado — es literalmente el dinero que ha «trabajado solo».</p>
+    </div>
+  </section>
+
+  <div class="ad-slot container-wide" data-ad-slot>
+    <span class="ad-label">ANUNCIO</span>
+    <!-- PEGA AQUÍ TU CÓDIGO DE ADSENSE -->
+  </div>
+
+  <section class="faq-section container-wide">
+    <h2>Preguntas frecuentes sobre el interés compuesto</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>¿Qué es el interés compuesto?</summary>
+        <p>Es el interés que se calcula no solo sobre el capital inicial, sino también sobre los intereses ya generados en periodos anteriores. Por eso el crecimiento se acelera con el tiempo.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Capitalización mensual o anual, cuál elijo?</summary>
+        <p>La capitalización mensual genera algo más de rendimiento que la anual al mismo tipo nominal, porque los intereses se reinvierten más a menudo. Elige la que coincida con el producto que estás evaluando.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Las aportaciones periódicas suman al final o durante todo el periodo?</summary>
+        <p>Se suman en cada periodo de capitalización (cada mes o cada año, según elijas) y generan intereses desde ese momento hasta el final.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Esta calculadora tiene en cuenta la inflación o los impuestos?</summary>
+        <p>No. Calcula el crecimiento nominal del capital. La inflación reduce el poder adquisitivo real, y las ganancias suelen tributar al retirarlas — ninguna de las dos cosas está incluida.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="more-section container-wide">
+    <h2>Más calculadoras</h2>
+    <div class="more-grid">
+      <a class="more-card" href="hipoteca.html"><span class="card-icon" aria-hidden="true">🏠</span><h3>Hipoteca</h3><p>Cuota mensual y cuadro de amortización.</p></a>
+      <a class="more-card" href="prestamo-personal.html"><span class="card-icon" aria-hidden="true">💳</span><h3>Préstamo personal</h3><p>Cuota, coste total y TAE aproximada.</p></a>
+      <a class="more-card" href="jubilacion.html"><span class="card-icon" aria-hidden="true">🌅</span><h3>Jubilación</h3><p>Cuánto capital puedes reunir de aquí a jubilarte.</p></a>
+      <a class="more-card" href="sueldo-neto.html"><span class="card-icon" aria-hidden="true">💶</span><h3>Sueldo neto</h3><p>De salario bruto a neto mensual, con IRPF y SS.</p></a>
+    </div>
+  </section>
+</main>
+
+<aside class="corner-toast" id="cornerAd" hidden>
+  <span class="ad-label">ANUNCIO</span>
+  <button type="button" class="corner-toast-close" id="cornerAdClose" aria-label="Cerrar anuncio">✕</button>
+</aside>
+
+<dialog id="adDialog" class="ad-dialog">
+  <div class="ad-dialog-body">
+    <button type="button" class="ad-dialog-close" id="adDialogClose" aria-label="Cerrar">✕</button>
+    <span class="ad-label">ANUNCIO</span>
+    <!-- PEGA AQUÍ TU CÓDIGO DE ADSENSE -->
+    <button type="button" class="btn ad-dialog-btn" id="adDialogCloseBtn">Cerrar y seguir</button>
+  </div>
+</dialog>
+
+<footer class="site-footer">
+  <div class="container-wide">
+    <div class="footer-cols">
+      <div>
+        <h4>ClaroCalc</h4>
+        <p>Calculadoras financieras claras, gratis y sin registro. Todo el cálculo ocurre en tu navegador.</p>
+      </div>
+      <div>
+        <h4>Calculadoras</h4>
+        <ul>
+          <li><a href="hipoteca.html">Hipoteca</a></li>
+          <li><a href="interes-compuesto.html">Interés compuesto</a></li>
+          <li><a href="prestamo-personal.html">Préstamo personal</a></li>
+          <li><a href="jubilacion.html">Jubilación</a></li>
+          <li><a href="sueldo-neto.html">Sueldo neto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacidad.html">Privacidad</a></li>
+          <li><a href="aviso-legal.html">Aviso legal</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="disclaimer-line">© 2026 ClaroCalc. Los resultados son estimaciones orientativas y no constituyen asesoramiento financiero, fiscal ni de inversión.</p>
+  </div>
+</footer>
+
+<script defer src="lib/manifest.js?v=20260824"></script>
+<script defer src="main.js?v=20260824"></script>
+<script defer src="chart.js?v=20260824"></script>
+<script defer src="calc-interes-compuesto.js?v=20260824"></script>
+</body>
+</html>
