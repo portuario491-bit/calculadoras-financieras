@@ -247,6 +247,7 @@ table { border-collapse: collapse; width: 100%; }
 .ad-dialog-btn { margin-top: .2rem; }
 .btn { padding: .7rem 1.2rem; border-radius: 999px; font-weight: 700; font-size: .88rem; background: var(--accent-soft); color: var(--accent); }
 .btn:hover { background: var(--border); }
+a.btn { display: inline-flex; align-items: center; }
 
 /* =============================================================
    10. Content sections (how-it-works, FAQ, more calcs)

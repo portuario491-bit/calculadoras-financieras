@@ -96,9 +96,20 @@
     });
   }
 
+  function prefillFromQuery() {
+    var q = new URLSearchParams(location.search);
+    var map = { importe: "#importe", interes: "#interes", plazo: "#plazo" };
+    Object.keys(map).forEach(function (key) {
+      var v = q.get(key);
+      var el = $(map[key]);
+      if (v !== null && el) el.value = v;
+    });
+  }
+
   function boot() {
     safe(initTipoSegmented, "initTipoSegmented");
     safe(initInputs, "initInputs");
+    safe(prefillFromQuery, "prefillFromQuery");
     render();
     window.addEventListener("resize", function () { clearTimeout(renderTimer); renderTimer = setTimeout(render, 150); });
   }

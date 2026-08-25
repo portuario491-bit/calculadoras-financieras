@@ -108,12 +108,33 @@
     });
   }
 
+  function prefillFromQuery() {
+    var q = new URLSearchParams(location.search);
+    var bruto = q.get("bruto");
+    if (bruto !== null) { var el = $("#salarioBruto"); if (el) el.value = bruto; }
+    var hijos = q.get("hijos");
+    if (hijos !== null) { var elH = $("#numHijos"); if (elH) elH.value = hijos; }
+    var comunidad = q.get("comunidad");
+    if (comunidad !== null) { var elC = $("#comunidad"); if (elC) elC.value = comunidad; }
+    var sit = q.get("situacion");
+    if (sit === "soltero" || sit === "casado") {
+      situacion = sit;
+      var group = $("#situacionPersonal");
+      if (group) {
+        Array.prototype.forEach.call(group.children, function (b) {
+          b.classList.toggle("is-active", b.dataset.situacion === sit);
+        });
+      }
+    }
+  }
+
   function boot() {
     safe(initSituacion, "initSituacion");
     ["#salarioBruto", "#numHijos", "#comunidad"].forEach(function (sel) {
       var el = $(sel);
       if (el) el.addEventListener("input", scheduleRender);
     });
+    safe(prefillFromQuery, "prefillFromQuery");
     render();
   }
 

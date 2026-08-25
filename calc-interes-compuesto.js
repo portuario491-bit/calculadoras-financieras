@@ -93,9 +93,20 @@
     });
   }
 
+  function prefillFromQuery() {
+    var q = new URLSearchParams(location.search);
+    var map = { capital: "#capitalInicial", aportacion: "#aportacion", interes: "#interesCompuesto", anios: "#anios" };
+    Object.keys(map).forEach(function (key) {
+      var v = q.get(key);
+      var el = $(map[key]);
+      if (v !== null && el) el.value = v;
+    });
+  }
+
   function boot() {
     safe(initFrecuencia, "initFrecuencia");
     safe(initInputs, "initInputs");
+    safe(prefillFromQuery, "prefillFromQuery");
     render();
     window.addEventListener("resize", function () { clearTimeout(renderTimer); renderTimer = setTimeout(render, 150); });
   }
