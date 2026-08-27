@@ -159,6 +159,57 @@
     </div>
   </section>
 
+  <section class="container-wide">
+    <div class="tool-card">
+      <h2>Simulador de amortización anticipada</h2>
+      <p class="hero-sub" style="margin-bottom:1.2rem;">Si aportas dinero extra para reducir el capital pendiente, ¿cuánto te ahorras en intereses? Usa el importe, tipo y plazo de arriba.</p>
+      <div class="calc-layout">
+        <div class="calc-form">
+          <div class="field">
+            <label class="field-label" for="extraImporte">Importe a amortizar</label>
+            <div class="input-suffix-wrap">
+              <input type="number" id="extraImporte" class="text-input" value="10000" min="0" max="2000000" step="500">
+              <span class="input-suffix">€</span>
+            </div>
+          </div>
+          <div class="field">
+            <label class="field-label" for="extraAnio">En qué año de la hipoteca</label>
+            <div class="input-suffix-wrap">
+              <input type="number" id="extraAnio" class="text-input" value="5" min="1" max="39" step="1">
+              <span class="input-suffix">año</span>
+            </div>
+          </div>
+          <div class="field">
+            <span class="field-label">Qué prefieres</span>
+            <div class="segmented" id="extraModo" role="group" aria-label="Efecto de la amortización anticipada">
+              <button type="button" class="is-active" data-modo="plazo">Reducir plazo</button>
+              <button type="button" data-modo="cuota">Reducir cuota</button>
+            </div>
+            <p class="field-hint" id="extraModoNote">Mantienes la misma cuota mensual, pero terminas de pagar antes.</p>
+          </div>
+        </div>
+
+        <div class="result-panel">
+          <div class="result-grid cols-3">
+            <div class="result-stat is-primary">
+              <div class="stat-label">Intereses que te ahorras</div>
+              <div class="stat-value" id="outExtraAhorro">—</div>
+            </div>
+            <div class="result-stat">
+              <div class="stat-label" id="outExtraSegundoLabel">Nuevo plazo</div>
+              <div class="stat-value" id="outExtraSegundo">—</div>
+            </div>
+            <div class="result-stat">
+              <div class="stat-label">Cuota mensual</div>
+              <div class="stat-value" id="outExtraCuota">—</div>
+            </div>
+          </div>
+          <p class="field-hint" id="outExtraDetalle" style="margin-top:.9rem;"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <div class="ad-slot container-wide" data-ad-slot>
     <span class="ad-label">ANUNCIO</span>
     <!-- PEGA AQUÍ TU CÓDIGO DE ADSENSE -->
@@ -273,6 +324,6 @@
 <script defer src="lib/manifest.js?v=20260824"></script>
 <script defer src="main.js?v=20260824"></script>
 <script defer src="chart.js?v=20260824"></script>
-<script defer src="calc-hipoteca.js?v=20260824"></script>
+<script defer src="calc-hipoteca.js?v=20260827"></script>
 </body>
 </html>

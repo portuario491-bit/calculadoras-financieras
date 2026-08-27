@@ -31,6 +31,40 @@
     return { cuota: cuota, n: n, yearly: yearly, totalPagado: cuota * n, totalIntereses: cuota * n - P };
   }
 
+  var modoExtra = "plazo";
+  var MODO_NOTES = {
+    plazo: "Mantienes la misma cuota mensual, pero terminas de pagar antes.",
+    cuota: "Mantienes el mismo plazo, pero pagas una cuota mensual más baja desde ese momento."
+  };
+
+  // Simula aplicar `extraAmount` al capital pendiente en el mes `extraMonth`,
+  // manteniendo la cuota (modo "plazo") o recalculándola para el plazo restante (modo "cuota").
+  function computeWithExtra(P, annualRatePct, years, extraAmount, extraYear, mode) {
+    var r = annualRatePct / 100 / 12;
+    var n = Math.round(years * 12);
+    var cuota = r > 0 ? (P * r) / (1 - Math.pow(1 + r, -n)) : P / n;
+    var extraMonth = Math.round(clamp(extraYear, 1, Math.max(1, years - 1)) * 12);
+    var balance = P, totalInteres = 0, m = 0, applied = false;
+    var maxMonths = n + 1;
+    while (balance > 0.5 && m < maxMonths) {
+      m++;
+      var interesMes = balance * r;
+      var capitalMes = Math.min(cuota - interesMes, balance);
+      balance -= capitalMes;
+      totalInteres += interesMes;
+      if (!applied && m === extraMonth && extraAmount > 0) {
+        var extra = Math.min(extraAmount, balance);
+        balance -= extra;
+        applied = true;
+        if (balance > 0.01 && mode === "cuota") {
+          var remaining = n - m;
+          if (remaining > 0) cuota = r > 0 ? (balance * r) / (1 - Math.pow(1 + r, -remaining)) : balance / remaining;
+        }
+      }
+    }
+    return { totalIntereses: totalInteres, meses: m, cuotaFinal: cuota };
+  }
+
   function render() {
     var importe = clamp(num($("#importe"), 150000), 1000, 2000000);
     var interes = clamp(num($("#interes"), 3.2), 0, 15);
@@ -69,6 +103,33 @@
         "</td><td>" + C.fmtEUR.format(r2.intereses) + "</td><td>" + C.fmtEUR.format(r2.pendiente) + "</td></tr>";
     }).join("");
 
+    safe(function () {
+      var extraImporte = clamp(num($("#extraImporte"), 10000), 0, 2000000);
+      var extraAnio = clamp(num($("#extraAnio"), 5), 1, Math.max(1, plazo - 1));
+      $("#extraAnio").max = Math.max(1, plazo - 1);
+
+      var conExtra = computeWithExtra(importe, interes, plazo, extraImporte, extraAnio, modoExtra);
+      var ahorro = res.totalIntereses - conExtra.totalIntereses;
+
+      $("#outExtraAhorro").textContent = C.fmtEUR.format(Math.max(0, ahorro));
+
+      if (modoExtra === "plazo") {
+        var mesesTotales = conExtra.meses;
+        var aniosNuevo = Math.floor(mesesTotales / 12), mesesResto = mesesTotales % 12;
+        var plazoTexto = aniosNuevo + (aniosNuevo === 1 ? " año" : " años");
+        if (mesesResto) plazoTexto += " " + mesesResto + (mesesResto === 1 ? " mes" : " meses");
+        $("#outExtraSegundoLabel").textContent = "Nuevo plazo";
+        $("#outExtraSegundo").textContent = plazoTexto;
+        $("#outExtraCuota").textContent = C.fmtEUR2.format(res.cuota);
+        $("#outExtraDetalle").textContent = "Terminarías de pagar " + (plazo * 12 - mesesTotales) + " meses antes, sin cambiar la cuota mensual.";
+      } else {
+        $("#outExtraSegundoLabel").textContent = "Plazo";
+        $("#outExtraSegundo").textContent = plazo + " años";
+        $("#outExtraCuota").textContent = C.fmtEUR2.format(conExtra.cuotaFinal);
+        $("#outExtraDetalle").textContent = "Tu cuota bajaría de " + C.fmtEUR2.format(res.cuota) + " a " + C.fmtEUR2.format(conExtra.cuotaFinal) + " al mes a partir del año " + extraAnio + ", manteniendo el plazo original.";
+      }
+    }, "amortizacion anticipada");
+
     if (userInteracted && window.__ADS__) window.__ADS__.showResultDialogOnce("hipoteca");
   }
 
@@ -90,9 +151,22 @@
   }
 
   function initInputs() {
-    ["#importe", "#interes", "#plazo"].forEach(function (sel) {
+    ["#importe", "#interes", "#plazo", "#extraImporte", "#extraAnio"].forEach(function (sel) {
       var el = $(sel);
       if (el) el.addEventListener("input", scheduleRender);
+    });
+  }
+
+  function initModoExtraSegmented() {
+    var group = $("#extraModo");
+    if (!group) return;
+    group.addEventListener("click", function (e) {
+      var btn = e.target.closest("[data-modo]");
+      if (!btn) return;
+      modoExtra = btn.dataset.modo;
+      Array.prototype.forEach.call(group.children, function (b) { b.classList.toggle("is-active", b === btn); });
+      $("#extraModoNote").textContent = MODO_NOTES[modoExtra];
+      scheduleRender();
     });
   }
 
@@ -108,6 +182,7 @@
 
   function boot() {
     safe(initTipoSegmented, "initTipoSegmented");
+    safe(initModoExtraSegmented, "initModoExtraSegmented");
     safe(initInputs, "initInputs");
     safe(prefillFromQuery, "prefillFromQuery");
     render();
