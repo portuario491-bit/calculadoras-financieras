@@ -87,6 +87,22 @@
     }));
   }
 
+  function initStickyCta() {
+    const bar = $("#stickyCta");
+    const hero = $(".hero");
+    if (!bar || !hero) return;
+    let visible = false;
+    function update() {
+      const shouldShow = window.scrollY > hero.offsetHeight * 0.6;
+      if (shouldShow !== visible) {
+        visible = shouldShow;
+        bar.classList.toggle("is-visible", visible);
+      }
+    }
+    document.addEventListener("scroll", update, { passive: true });
+    update();
+  }
+
   function boot() {
     safe(mountSteps, "mountSteps");
     safe(mountSectors, "mountSectors");
@@ -94,6 +110,7 @@
     safe(mountFaq, "mountFaq");
     safe(initFaqToggle, "initFaqToggle");
     safe(initDemoToggle, "initDemoToggle");
+    safe(initStickyCta, "initStickyCta");
     document.documentElement.classList.add("is-ready");
   }
 

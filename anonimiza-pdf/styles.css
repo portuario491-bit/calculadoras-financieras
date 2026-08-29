@@ -250,6 +250,27 @@ h3 { font-size: 20px; }
 .step-card h3 { font-size: 17px; margin-bottom: 8px; }
 .step-card p { color: var(--muted); font-size: 14.5px; }
 
+/* Time comparison */
+.compare-grid { display: grid; gap: 14px; align-items: center; grid-template-columns: 1fr; max-width: 760px; margin: 0 auto; }
+@media (min-width: 720px) { .compare-grid { grid-template-columns: 1fr auto 1fr; } }
+.compare-card { padding: 28px 26px; text-align: center; }
+.compare-card.is-highlight { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.compare-time { font-family: var(--serif); font-size: 40px; font-weight: 600; }
+.compare-arrow { text-align: center; font-size: 26px; color: var(--muted-soft); transform: rotate(90deg); }
+@media (min-width: 720px) { .compare-arrow { transform: none; } }
+
+/* Sticky mobile CTA */
+.sticky-cta {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 90;
+  background: var(--card); border-top: 1px solid var(--border);
+  padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+  box-shadow: 0 -8px 24px rgba(16,21,31,.08);
+  transform: translateY(110%); transition: transform .3s var(--ease-out);
+}
+.sticky-cta.is-visible { transform: translateY(0); }
+.sticky-cta .btn { width: 100%; }
+@media (min-width: 960px) { .sticky-cta { display: none; } }
+
 /* Sectors */
 .sector-grid { display: grid; gap: 18px; }
 @media (min-width: 720px) { .sector-grid { grid-template-columns: repeat(3, 1fr); } }
