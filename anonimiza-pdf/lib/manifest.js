@@ -4,7 +4,7 @@
     name: "AnonimizaPDF",
     tagline: "Censura de datos personales en tus PDF. De verdad.",
     dominio: "anonimiza.utilix.uno",
-    contacto: { email: "hola@anonimiza.utilix.uno" },
+    contacto: { email: "portuario491@hotmail.com" },
 
     tipos: [
       { id: "nombre", label: "Nombres y apellidos" },
