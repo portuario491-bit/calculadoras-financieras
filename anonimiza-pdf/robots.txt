@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /app.html
+Disallow: /cuenta.html
+Disallow: /login.html
+Disallow: /registro.html
+Disallow: /api/
+Disallow: /datos/
+
+Sitemap: https://anonimiza.utilix.uno/sitemap.xml

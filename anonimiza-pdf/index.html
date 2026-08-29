@@ -9,13 +9,34 @@
 <meta property="og:title" content="AnonimizaPDF — Censura de datos personales en PDF">
 <meta property="og:description" content="Detección automática con IA y censura real (no un recuadro de mentira) para gestorías, despachos y RR. HH.">
 <meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232148d1'/%3E%3Crect x='8' y='14' width='16' height='5' rx='1' fill='%23fff'/%3E%3C/svg%3E">
+<meta property="og:url" content="https://anonimiza.utilix.uno/">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://anonimiza.utilix.uno/assets/img/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AnonimizaPDF — Censura de datos personales en PDF">
+<meta name="twitter:description" content="Detección automática con IA y censura real para gestorías, despachos y RR. HH.">
+<meta name="twitter:image" content="https://anonimiza.utilix.uno/assets/img/og-image.png">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232148d1'/%3E%3Crect x='8' y='14' width='16' height='5' rx='1' fill='%23fff'/%3E%3C/svg%3E" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500&display=swap">
 <link rel="stylesheet" href="styles.css?v=20260829">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SoftwareApplication","name":"AnonimizaPDF","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":[{"@type":"Offer","price":"0","priceCurrency":"EUR"},{"@type":"Offer","price":"19","priceCurrency":"EUR"},{"@type":"Offer","price":"59","priceCurrency":"EUR"}],"description":"Herramienta de censura automática de datos personales en documentos PDF mediante inteligencia artificial."}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"¿La censura es reversible? ¿Alguien podría copiar el texto de debajo del recuadro negro?","acceptedAnswer":{"@type":"Answer","text":"No. AnonimizaPDF no dibuja un rectángulo encima del texto: cada página censurada se reconstruye como una imagen con las zonas marcadas ya pintadas en negro antes de generarse el PDF final. El resultado no contiene texto seleccionable en ningún punto de la página, así que no hay nada que copiar, buscar ni recuperar por debajo."}},
+{"@type":"Question","name":"¿Eso tiene alguna contrapartida?","acceptedAnswer":{"@type":"Answer","text":"Sí: el PDF resultante deja de tener texto seleccionable o buscable en toda la página, y pesa algo más que el original porque cada página pasa a ser una imagen. Visualmente e impreso es idéntico al documento original."}},
+{"@type":"Question","name":"¿Qué pasa si la IA marca algo que no debía, o se le escapa un dato?","acceptedAnswer":{"@type":"Answer","text":"Puedes activar o desactivar cada detección individual antes de descargar, y también dibujar tú mismo una caja manual sobre cualquier zona que la IA no haya detectado."}},
+{"@type":"Question","name":"¿Subís nuestros documentos a algún servidor?","acceptedAnswer":{"@type":"Answer","text":"El archivo PDF nunca sale de tu navegador. Solo viaja a nuestro servidor el texto de cada página, para que la inteligencia artificial identifique qué fragmentos son datos personales."}},
+{"@type":"Question","name":"¿Qué es un crédito?","acceptedAnswer":{"@type":"Answer","text":"Un crédito equivale a una página procesada. Un contrato de 8 páginas consume 8 créditos, se detecten datos o no."}},
+{"@type":"Question","name":"¿Puedo probarlo sin pagar?","acceptedAnswer":{"@type":"Answer","text":"Sí, el plan Gratis incluye 5 créditos de regalo al crear la cuenta, sin necesidad de tarjeta."}}
+]}
 </script>
 </head>
 <body>
