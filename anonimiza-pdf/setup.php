@@ -46,8 +46,10 @@ function detectar($k) {
   if (strlen($k) >= 20 && !preg_match('/\s/', $k)) return 'gemini';
   return '';
 }
+// Devuelve ['ok'=>bool, 'detalle'=>string legible] en vez de solo true/false,
+// para poder decir EXACTAMENTE qué ha respondido el proveedor.
 function validar($prov, $key) {
-  if (!function_exists('curl_init')) return true;
+  if (!function_exists('curl_init')) return ['ok' => true, 'detalle' => ''];
   if ($prov === 'claude') {
     $ch = curl_init('https://api.anthropic.com/v1/messages');
     curl_setopt_array($ch, [
@@ -59,19 +61,32 @@ function validar($prov, $key) {
     $ch = curl_init('https://generativelanguage.googleapis.com/v1beta/models?key=' . urlencode($key));
     curl_setopt_array($ch, [CURLOPT_RETURNTRANSFER => true, CURLOPT_TIMEOUT => 20]);
   }
-  $r = curl_exec($ch); $c = (int) curl_getinfo($ch, CURLINFO_HTTP_CODE); curl_close($ch);
-  return ($r !== false && $c === 200);
+  $r = curl_exec($ch);
+  $c = (int) curl_getinfo($ch, CURLINFO_HTTP_CODE);
+  $curlErr = curl_error($ch);
+  curl_close($ch);
+  if ($r === false) return ['ok' => false, 'detalle' => 'No se ha podido conectar (' . $curlErr . ').'];
+  if ($c === 200) return ['ok' => true, 'detalle' => ''];
+  $cuerpo = json_decode($r, true);
+  $razon = $cuerpo['error']['message'] ?? $cuerpo['error']['type'] ?? substr($r, 0, 150);
+  return ['ok' => false, 'detalle' => 'HTTP ' . $c . ' — ' . $razon];
 }
 
 $msg = ''; $tono = 'warn';
 if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST') {
   $k = trim((string) ($_POST['clave'] ?? ''));
   $prov = detectar($k);
+  $longitud = strlen($k);
+  $pista = $longitud > 12 ? substr($k, 0, 8) . '…' . substr($k, -4) . ' (' . $longitud . ' caracteres)' : '';
   if ($prov === '') {
     $msg = 'Eso no parece una clave. Pégala entera, sin espacios.';
-  } elseif (!validar($prov, $k)) {
-    $msg = $PROV[$prov]['nombre'] . ' no ha aceptado esa clave. Compruébala y vuelve a pegarla.';
   } else {
+    $v = validar($prov, $k);
+    if (!$v['ok']) {
+      $msg = $PROV[$prov]['nombre'] . ' no ha aceptado esa clave. ' . $v['detalle'] . ($pista ? ' — Lo que has pegado: ' . $pista : '');
+    }
+  }
+  if ($prov !== '' && ($v['ok'] ?? false)) {
     $donde = guardar($PROV[$prov], $k);
     if ($donde === false) {
       $msg = 'La clave es válida, pero el servidor no me deja escribirla. Revisa los permisos.';
