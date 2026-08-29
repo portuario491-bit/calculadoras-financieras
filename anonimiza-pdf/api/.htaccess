@@ -1,0 +1,23 @@
+# Los ficheros compartidos no son endpoints: nadie debe poder pedirlos
+# directamente por URL, solo los incluye el propio PHP con require.
+<FilesMatch "^(_comun|gemini)\.php$">
+  Require all denied
+</FilesMatch>
+Options -Indexes
+
+# Refuerzo a nivel de servidor: cada respuesta de /api/ son datos de cuenta
+# de una sesion concreta (creditos, plan, historial). El CDN de Hostinger
+# aplica cache publica por defecto si el origen no dice lo contrario, lo que
+# podria servir los datos de un usuario a otro distinto. Nunca cachear.
+<IfModule mod_headers.c>
+  <FilesMatch "\.php$">
+    Header always set Cache-Control "no-store, no-cache, must-revalidate, private, max-age=0"
+    Header always set Pragma "no-cache"
+    Header unset ETag
+  </FilesMatch>
+</IfModule>
+<IfModule mod_expires.c>
+  <FilesMatch "\.php$">
+    ExpiresActive Off
+  </FilesMatch>
+</IfModule>

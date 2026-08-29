@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Censurar PDF — AnonimizaPDF</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="styles.css?v=20260829">
+</head>
+<body>
+<div class="app-shell">
+  <div class="demo-banner">⚠️ <strong>MODO DEMO</strong> — los pagos son simulados, no se cobra nada de verdad.</div>
+  <header class="app-top">
+    <a href="index.html" class="brand"><span class="brand-mark">A</span>AnonimizaPDF</a>
+    <div class="app-top-actions">
+      <span class="credits-pill" id="creditsPill">⚡ <span class="n" id="creditsN">—</span> créditos</span>
+      <div class="user-menu" id="userMenu">
+        <button type="button" class="user-menu-btn" id="userMenuBtn">
+          <span class="user-avatar" id="userAvatar">·</span>
+          <span id="userEmailLabel">Cuenta</span>
+        </button>
+        <div class="user-menu-list">
+          <a href="cuenta.html">Mi cuenta</a>
+          <a href="app.html">Censurar PDF</a>
+          <button type="button" id="btnLogout">Cerrar sesión</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="app-main">
+    <div class="app-container">
+      <div class="app-header">
+        <h1>Censurar PDF</h1>
+        <p>Sube un contrato, nómina o factura. La IA localiza los datos personales; tú decides qué se tapa. 1 crédito = 1 página.</p>
+      </div>
+
+      <div class="limits-note">
+        El archivo se procesa en tu propio navegador y nunca se sube entero al servidor: solo enviamos el texto de cada página para que la IA lo analice. Tamaño máximo recomendado: 20&nbsp;MB / 60 páginas por documento.
+      </div>
+
+      <div class="card tool-card" data-tool-state="idle" id="toolCard">
+
+        <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Subir PDF">
+          <svg class="dz-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v12m0 0-4-4m4 4 4-4M5 21h14"/></svg>
+          <h3>Arrastra tu PDF aquí</h3>
+          <p>o haz clic para elegir el archivo — solo .pdf</p>
+          <div class="dz-file-name" id="dzFileName"></div>
+          <input type="file" id="fileInput" accept="application/pdf" class="sr-only">
+        </div>
+
+        <div class="tool-progress" id="toolProgress">
+          <div class="spinner" aria-hidden="true"></div>
+          <div class="progress-label" id="progressLabel">Leyendo el documento…</div>
+          <div class="progress-bar"><div class="progress-bar-fill" id="progressFill"></div></div>
+        </div>
+
+        <div class="tool-error" id="toolError">
+          <h3>No hemos podido procesar el documento</h3>
+          <p id="toolErrorMsg">Ha ocurrido un error inesperado.</p>
+          <button type="button" class="btn btn-ghost" id="btnRetry">Volver a intentar</button>
+        </div>
+
+        <div class="tool-workspace" id="toolWorkspace">
+          <div class="viewer-pane">
+            <div class="viewer-toolbar">
+              <div class="page-nav">
+                <button type="button" id="pagePrev" aria-label="Página anterior">‹</button>
+                <span id="pageLabel">Página 1 / 1</span>
+                <button type="button" id="pageNext" aria-label="Página siguiente">›</button>
+              </div>
+              <span class="badge badge-muted" id="scanBadge" style="display:none">Escaneado · OCR</span>
+            </div>
+            <div class="canvas-wrap">
+              <div class="canvas-stack" id="canvasStack">
+                <canvas id="pageCanvas"></canvas>
+                <div class="box-overlay" id="boxOverlay"></div>
+              </div>
+            </div>
+            <div class="manual-toggle-row">
+              <button type="button" class="btn btn-ghost btn-sm" id="btnManualBox">✛ Tapar una zona a mano</button>
+              <span class="muted" style="font-size:12.5px" id="manualHint"></span>
+            </div>
+          </div>
+
+          <div class="detections-pane">
+            <div class="det-summary">
+              <h3 style="font-size:15px">Detecciones</h3>
+              <span class="badge badge-muted" id="detCount">0</span>
+            </div>
+            <div class="det-list" id="detList">
+              <div class="det-empty">Sube un documento para empezar.</div>
+            </div>
+            <div class="honesty-note">
+              <strong>Antes de descargar:</strong> revisa cada detección. La censura definitiva elimina el texto de la página entera (deja de ser seleccionable o buscable en todo el documento) y el archivo pesará algo más — es lo que hace que el tapado sea real e irreversible. Recomendamos una última comprobación visual.
+            </div>
+            <div class="workspace-actions">
+              <button type="button" class="btn btn-ghost" id="btnNuevo">Subir otro documento</button>
+              <button type="button" class="btn btn-primary btn-block" id="btnDescargar">Descargar PDF censurado</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- Modal: sin créditos suficientes -->
+<div class="modal-backdrop" id="modalUpgrade">
+  <div class="card modal">
+    <h3>Te has quedado sin créditos</h3>
+    <p class="muted" style="font-size:14px" id="upgradeMsg">Este documento necesita más créditos de los que te quedan. Mejora de plan para seguir procesando documentos.</p>
+    <div class="plan-mini-grid" id="upgradePlans"></div>
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost btn-block" id="btnCloseUpgrade">Ahora no</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: checkout simulado -->
+<div class="modal-backdrop" id="modalCheckout">
+  <div class="card modal">
+    <span class="badge badge-demo" style="margin-bottom:10px">⚠️ MODO DEMO</span>
+    <h3 id="checkoutTitle">Confirmar plan</h3>
+    <p class="muted" style="font-size:14px" id="checkoutDesc"></p>
+    <div class="fake-card">4242 4242 4242 4242 &nbsp;·&nbsp; 12/29 &nbsp;·&nbsp; CVC 123</div>
+    <p class="muted" style="font-size:12.5px">No se realiza ningún cargo real. Este formulario es una simulación para probar el producto de principio a fin.</p>
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" id="btnCloseCheckout">Cancelar</button>
+      <button type="button" class="btn btn-primary btn-block" id="btnConfirmCheckout">Simular pago</button>
+    </div>
+  </div>
+</div>
+
+<div id="toasts" aria-live="polite"></div>
+
+<script defer src="lib/vendor/jspdf.umd.min.js"></script>
+<script defer src="lib/vendor/tesseract/tesseract.min.js"></script>
+<script defer src="lib/manifest.js"></script>
+<script defer src="common.js?v=20260829"></script>
+<script defer src="shell.js?v=20260829"></script>
+<script defer src="app.js?v=20260829"></script>
+</body>
+</html>

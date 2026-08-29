@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AnonimizaPDF — Censura datos personales en tus PDF, de verdad</title>
+<meta name="description" content="Sube un contrato, una nómina o una factura y AnonimizaPDF detecta con IA los datos personales (nombres, DNI, teléfonos, emails, direcciones, cuentas bancarias, fechas de nacimiento) y los censura de verdad, eliminando el texto del archivo. Para gestorías, despachos de abogados y RR. HH.">
+<link rel="canonical" href="https://anonimiza.utilix.uno/">
+<meta property="og:title" content="AnonimizaPDF — Censura de datos personales en PDF">
+<meta property="og:description" content="Detección automática con IA y censura real (no un recuadro de mentira) para gestorías, despachos y RR. HH.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232148d1'/%3E%3Crect x='8' y='14' width='16' height='5' rx='1' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="styles.css?v=20260829">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"AnonimizaPDF","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":[{"@type":"Offer","price":"0","priceCurrency":"EUR"},{"@type":"Offer","price":"19","priceCurrency":"EUR"},{"@type":"Offer","price":"59","priceCurrency":"EUR"}],"description":"Herramienta de censura automática de datos personales en documentos PDF mediante inteligencia artificial."}
+</script>
+</head>
+<body>
+<a href="#main" class="skip-link">Saltar al contenido</a>
+<div class="demo-banner">⚠️ <strong>MODO DEMO</strong> — los planes de pago son una simulación, no se cobra nada de verdad.</div>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand"><span class="brand-mark">A</span>AnonimizaPDF</a>
+    <nav class="nav-links" aria-label="Principal">
+      <a href="#producto">Producto</a>
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#precios">Precios</a>
+      <a href="#faq">Preguntas</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="login.html" class="btn btn-ghost btn-sm">Iniciar sesión</a>
+      <a href="registro.html" class="btn btn-primary btn-sm">Probar gratis</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">Para gestorías, despachos y RR. HH.</span>
+        <h1>Censura los datos personales de tus documentos, sin repasarlos uno a uno.</h1>
+        <p class="lead">Sube un contrato, una nómina o una factura. La IA localiza nombres, DNI, teléfonos, emails, direcciones, cuentas bancarias y fechas de nacimiento. Tú revisas y decides qué se tapa. La censura es real: el texto se elimina del archivo, no se dibuja un recuadro encima.</p>
+        <div class="hero-cta">
+          <a href="registro.html" class="btn btn-primary">Probar gratis — 5 créditos</a>
+          <a href="#producto" class="btn btn-ghost">Ver cómo funciona</a>
+        </div>
+        <div class="hero-trust">
+          <span>✓ Sin tarjeta para empezar</span>
+          <span>✓ El PDF nunca sale de tu navegador</span>
+          <span>✓ Revisión manual antes de descargar</span>
+        </div>
+      </div>
+      <div class="demo-doc-wrap" id="producto">
+        <div class="demo-doc-toggle" role="tablist" aria-label="Antes y después">
+          <button type="button" class="is-active" data-demo-mode="antes">Antes</button>
+          <button type="button" data-demo-mode="despues">Después</button>
+        </div>
+        <div class="demo-doc" id="demoDoc" data-mode="antes">
+          <div class="dd-h">Contrato de prestación de servicios</div>
+          <div class="dd-sub">Documento de ejemplo — datos ficticios</div>
+          <div class="dd-row"><span class="dd-label">Nombre</span><span><mark>Marta Sánchez Iglesias</mark></span></div>
+          <div class="dd-row"><span class="dd-label">DNI</span><span><mark>52384719Q</mark></span></div>
+          <div class="dd-row"><span class="dd-label">Teléfono</span><span><mark>+34 611 22 33 44</mark></span></div>
+          <div class="dd-row"><span class="dd-label">Email</span><span><mark>marta.sanchez@ejemplo.com</mark></span></div>
+          <div class="dd-row"><span class="dd-label">Dirección</span><span><mark>C/ Alcalá 142, 3ºB, Madrid</mark></span></div>
+          <div class="dd-row"><span class="dd-label">IBAN</span><span><mark>ES91 2100 0418 4502 0005 1332</mark></span></div>
+          <div class="dd-row"><span class="dd-label">Fecha nac.</span><span><mark>14/03/1988</mark></span></div>
+          <div class="dd-row"><span class="dd-label">Importe</span><span>3.200,00 €</span></div>
+        </div>
+        <p class="demo-doc-caption">Ejemplo ilustrativo con datos ficticios. Cambia entre «Antes» y «Después» para ver el resultado.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="como-funciona">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Cómo funciona</span>
+        <h2>Tres pasos, sin instalar nada</h2>
+        <p>Ni plantillas, ni buscar y reemplazar a mano. Sube el documento y revisa lo que la IA encuentra.</p>
+      </div>
+      <div class="steps-grid" data-steps></div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Pensado para tu sector</span>
+        <h2>Un mismo problema, todos los días</h2>
+      </div>
+      <div class="sector-grid" data-sectors></div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--card); border-top:1px solid var(--border-soft); border-bottom:1px solid var(--border-soft)">
+    <div class="container trust-block">
+      <div>
+        <span class="eyebrow">La diferencia importa</span>
+        <h2>Un recuadro negro no es censurar un documento</h2>
+        <p class="muted" style="margin-top:14px">Muchas herramientas «censuran» dibujando un rectángulo encima del texto. El texto original sigue ahí debajo: se puede seleccionar, copiar o extraer con cualquier lector de PDF. AnonimizaPDF hace algo distinto.</p>
+        <div class="trust-list">
+          <div class="trust-item">
+            <span class="ic">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>
+            </span>
+            <div><h4>Se elimina el texto, no se tapa</h4><p>Cada página se reconstruye como una imagen con las zonas marcadas ya pintadas en negro antes de generar el PDF final.</p></div>
+          </div>
+          <div class="trust-item">
+            <span class="ic">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>
+            </span>
+            <div><h4>Nada que copiar por debajo</h4><p>El resultado no tiene texto seleccionable en ningún punto de la página. No hay capa oculta que extraer.</p></div>
+          </div>
+          <div class="trust-item">
+            <span class="ic">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>
+            </span>
+            <div><h4>Te lo decimos antes de descargar</h4><p>El PDF resultante pesa algo más y pierde el texto seleccionable de toda la página. Es el precio de que la censura sea real, y te lo avisamos siempre.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="trust-panel">
+        <h4>En términos técnicos</h4>
+        <p>El navegador extrae la posición exacta de cada palabra con la propia capa de texto del PDF (o con reconocimiento óptico si es un escaneo). La IA solo decide <em>qué</em> fragmentos son datos personales — nunca calcula coordenadas, así que el recuadro no puede quedar mal colocado.</p>
+        <p>Después, cada página se dibuja en un lienzo, se pintan de negro las zonas activas y la página se exporta como imagen dentro de un PDF nuevo con <code>jsPDF</code>. El archivo final no contiene ni un solo objeto de texto.</p>
+        <p style="margin-bottom:0">Tú revisas cada detección antes de descargar, y puedes añadir cajas manuales sobre cualquier zona que la IA no haya marcado.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="precios">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Precios</span>
+        <h2>Un crédito, una página</h2>
+        <p>Sin letra pequeña: 1 crédito = 1 página procesada, se detecten datos o no. Empieza gratis, sube de plan cuando lo necesites.</p>
+      </div>
+      <div class="pricing-grid" data-pricing></div>
+      <p class="pricing-note">Precios con IVA no incluido · Los planes de pago son una simulación en esta demo (⚠️ MODO DEMO) · Cancela cuando quieras</p>
+    </div>
+  </section>
+
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Preguntas frecuentes</span>
+        <h2>Lo que suelen preguntarnos</h2>
+      </div>
+      <div class="faq-list" data-faq></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-band">
+        <h2>Prueba AnonimizaPDF con tu próximo documento</h2>
+        <p>5 créditos gratis al crear la cuenta. No hace falta tarjeta.</p>
+        <div class="hero-cta">
+          <a href="registro.html" class="btn btn-light">Crear cuenta gratis</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="brand"><span class="brand-mark">A</span>AnonimizaPDF</a>
+        <p>Censura automática de datos personales en documentos PDF, con revisión humana antes de descargar. Hecho para gestorías, despachos de abogados y departamentos de RR. HH.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Producto</h5>
+        <ul>
+          <li><a href="#como-funciona">Cómo funciona</a></li>
+          <li><a href="#precios">Precios</a></li>
+          <li><a href="#faq">Preguntas frecuentes</a></li>
+          <li><a href="registro.html">Crear cuenta</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="privacidad.html">Privacidad</a></li>
+          <li><a href="terminos.html">Términos y condiciones</a></li>
+          <li><a href="aviso-legal.html">Aviso legal</a></li>
+          <li><a href="mailto:hola@anonimiza.utilix.uno">hola@anonimiza.utilix.uno</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 AnonimizaPDF. Todos los derechos reservados.</span>
+      <span>Demostración funcional — pagos simulados (MODO DEMO)</span>
+    </div>
+  </div>
+</footer>
+
+<div id="toasts" aria-live="polite"></div>
+
+<script defer src="lib/manifest.js"></script>
+<script defer src="common.js?v=20260829"></script>
+<script defer src="main.js?v=20260829"></script>
+</body>
+</html>

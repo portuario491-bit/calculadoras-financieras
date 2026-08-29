@@ -1,0 +1,4 @@
+# Carpeta de respaldo para la base de datos SOLO si el hosting no permite
+# escribir fuera de public_html. Nadie debe poder descargar estos ficheros
+# nunca, bajo ninguna circunstancia.
+Require all denied
