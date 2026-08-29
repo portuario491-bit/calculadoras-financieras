@@ -29,7 +29,8 @@
       btn.disabled = false; btn.textContent = "Crear cuenta gratis";
       if (!r.ok) { showError(r.error || "No se ha podido crear la cuenta."); return; }
       toast("Cuenta creada. ¡Bienvenido!", "ok");
-      window.location.href = "app.html";
+      const plan = new URLSearchParams(window.location.search).get("plan");
+      window.location.href = "app.html" + (plan ? "?plan=" + encodeURIComponent(plan) : "");
     });
   }
 

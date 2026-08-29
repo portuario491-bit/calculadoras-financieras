@@ -286,13 +286,10 @@
   }
   function closeUpgrade() { $("#modalUpgrade").classList.remove("is-open"); }
 
-  function onCheckoutConfirmed(usuario) {
-    usuarioActual = usuario;
-    if (pendingFile) {
-      const f = pendingFile; pendingFile = null;
-      toast("Créditos recargados. Retomando el documento…", "ok");
-      processDocument(f);
-    }
+  function onCheckoutConfirmed() {
+    // El interés queda registrado, pero el plan no cambia todavía (no hay
+    // pagos reales activos): no hay créditos nuevos con los que reintentar
+    // el documento pendiente.
   }
 
   // ---------- main pipeline ----------
@@ -538,6 +535,14 @@
     if (modalUpgrade) modalUpgrade.addEventListener("click", (e) => { if (e.target === modalUpgrade) closeUpgrade(); });
   }
 
+  async function openPlanFromUrl() {
+    const plan = new URLSearchParams(window.location.search).get("plan");
+    const valido = plan && brand.planes.some(p => p.id === plan && p.id !== "gratis");
+    if (!valido) return;
+    history.replaceState(null, "", window.location.pathname);
+    checkout.open(plan);
+  }
+
   async function boot() {
     checkout = S.initCheckoutModal({ onConfirmed: onCheckoutConfirmed });
     const usuario = await A.requireSession("login.html");
@@ -547,6 +552,7 @@
     safe(initDropzone, "initDropzone");
     safe(initWorkspaceActions, "initWorkspaceActions");
     safe(initManualBox, "initManualBox");
+    safe(openPlanFromUrl, "openPlanFromUrl");
   }
 
   if (document.readyState === "loading") {

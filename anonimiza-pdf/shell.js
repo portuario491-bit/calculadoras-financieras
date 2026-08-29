@@ -58,8 +58,8 @@
       currentPlan = planId;
       const p = planData(planId);
       if (!p) return;
-      $("#checkoutTitle").textContent = "Confirmar plan " + p.nombre;
-      $("#checkoutDesc").textContent = p.precio + "€ / mes · " + p.creditos + " créditos al mes. Pago simulado, no se cobra nada.";
+      $("#checkoutTitle").textContent = "Quiero el plan " + p.nombre;
+      $("#checkoutDesc").textContent = p.precio + "€ / mes · " + p.creditos + " créditos al mes. Los pagos todavía no están activos: apúntate y te avisamos en cuanto puedas contratarlo, sin ningún compromiso.";
       backdrop.classList.add("is-open");
     }
     if (btnClose) btnClose.addEventListener("click", close);
@@ -67,13 +67,13 @@
     if (btnConfirm) {
       btnConfirm.addEventListener("click", async () => {
         if (!currentPlan) return;
-        btnConfirm.disabled = true; btnConfirm.textContent = "Procesando…";
-        const r = await apiCall("checkout", { plan: currentPlan });
-        btnConfirm.disabled = false; btnConfirm.textContent = "Simular pago";
-        if (!r.ok) { toast(r.error || "No se ha podido simular el pago.", "err"); return; }
+        btnConfirm.disabled = true; btnConfirm.textContent = "Apuntando…";
+        const r = await apiCall("interes", { plan: currentPlan });
+        btnConfirm.disabled = false; btnConfirm.textContent = "Apuntarme a la lista de espera";
+        if (!r.ok) { toast(r.error || "No se ha podido registrar tu interés.", "err"); return; }
         close();
-        toast("Plan " + planLabel(currentPlan) + " activado (simulado). Créditos recargados.", "ok");
-        if (opts.onConfirmed) opts.onConfirmed(r.usuario);
+        toast("¡Apuntado! Te avisaremos en cuanto el plan " + planLabel(currentPlan) + " esté disponible.", "ok");
+        if (opts.onConfirmed) opts.onConfirmed(null);
       });
     }
     return { open, close };

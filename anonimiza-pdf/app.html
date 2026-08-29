@@ -12,7 +12,7 @@
 </head>
 <body>
 <div class="app-shell">
-  <div class="demo-banner">⚠️ <strong>MODO DEMO</strong> — los pagos son simulados, no se cobra nada de verdad.</div>
+  <div class="demo-banner">⏳ <strong>LISTA DE ESPERA</strong> — los planes de pago todavía no están activos, no se cobra nada de verdad.</div>
   <header class="app-top">
     <a href="index.html" class="brand"><span class="brand-mark">A</span>AnonimizaPDF</a>
     <div class="app-top-actions">
@@ -121,17 +121,16 @@
   </div>
 </div>
 
-<!-- Modal: checkout simulado -->
+<!-- Modal: lista de espera (todavía no hay pagos reales activos) -->
 <div class="modal-backdrop" id="modalCheckout">
   <div class="card modal">
-    <span class="badge badge-demo" style="margin-bottom:10px">⚠️ MODO DEMO</span>
-    <h3 id="checkoutTitle">Confirmar plan</h3>
+    <span class="badge badge-demo" style="margin-bottom:10px">⏳ LISTA DE ESPERA</span>
+    <h3 id="checkoutTitle">Quiero este plan</h3>
     <p class="muted" style="font-size:14px" id="checkoutDesc"></p>
-    <div class="fake-card">4242 4242 4242 4242 &nbsp;·&nbsp; 12/29 &nbsp;·&nbsp; CVC 123</div>
-    <p class="muted" style="font-size:12.5px">No se realiza ningún cargo real. Este formulario es una simulación para probar el producto de principio a fin.</p>
+    <p class="muted" style="font-size:12.5px">No se te va a cobrar nada ahora ni pedimos datos de pago. Solo queremos saber si te interesa antes de activar los cobros de verdad.</p>
     <div class="modal-actions">
-      <button type="button" class="btn btn-ghost" id="btnCloseCheckout">Cancelar</button>
-      <button type="button" class="btn btn-primary btn-block" id="btnConfirmCheckout">Simular pago</button>
+      <button type="button" class="btn btn-ghost" id="btnCloseCheckout">Ahora no</button>
+      <button type="button" class="btn btn-primary btn-block" id="btnConfirmCheckout">Apuntarme a la lista de espera</button>
     </div>
   </div>
 </div>
@@ -140,9 +139,9 @@
 
 <script defer src="lib/vendor/jspdf.umd.min.js"></script>
 <script defer src="lib/vendor/tesseract/tesseract.min.js"></script>
-<script defer src="lib/manifest.js?v=20260829"></script>
+<script defer src="lib/manifest.js?v=20260829b"></script>
 <script defer src="common.js?v=20260829"></script>
-<script defer src="shell.js?v=20260829"></script>
-<script defer src="app.js?v=20260829"></script>
+<script defer src="shell.js?v=20260829b"></script>
+<script defer src="app.js?v=20260829b"></script>
 </body>
 </html>

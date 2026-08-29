@@ -106,7 +106,7 @@
       },
       {
         p: "¿Los pagos son reales?",
-        r: "Todavía no: esta es una demostración funcional y los pagos están simulados (verás el aviso de MODO DEMO en todo momento). Las cuentas, el inicio de sesión y el contador de créditos sí son reales."
+        r: "Todavía no: los planes de pago están en lista de espera mientras validamos la demanda antes de activarlos del todo (verás el aviso correspondiente en toda la web). Si pulsas «Elegir plan» solo apuntamos tu interés, no se te cobra nada. Las cuentas, el inicio de sesión y el contador de créditos sí son reales."
       }
     ],
 

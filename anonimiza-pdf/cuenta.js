@@ -81,7 +81,7 @@
   }
 
   async function boot() {
-    checkout = S.initCheckoutModal({ onConfirmed: renderAll });
+    checkout = S.initCheckoutModal({});
     const usuario = await A.requireSession("login.html");
     if (!usuario) return;
     renderAll(usuario);
