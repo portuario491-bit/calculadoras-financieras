@@ -30,8 +30,12 @@
     otras: 1.00
   };
 
-  var SS_RATE_TRABAJADOR = 0.0635; // contingencias comunes + desempleo + FP (aprox.)
-  var SS_BASE_MAX_ANUAL = 56646;   // aprox. 12 × base máxima mensual de cotización
+  // Régimen General, contrato indefinido estándar, 2026 (Orden PJC/297/2026):
+  // contingencias comunes 4,70% + desempleo 1,55% + FP 0,10% + MEI 0,15% = 6,50%.
+  // Contratos temporales u otras situaciones especiales pueden tener tipos distintos
+  // (p. ej. desempleo en temporal) que esta calculadora no distingue.
+  var SS_RATE_TRABAJADOR = 0.065;
+  var SS_BASE_MAX_ANUAL = 61214.40; // 12 × 5.101,20 € (tope mensual 2026, Orden PJC/297/2026)
   var GASTOS_DEDUCIBLES = 2000;    // reducción estándar por rendimientos del trabajo
 
   var MINIMO_PERSONAL_SOLTERO = 5550;
