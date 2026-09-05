@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Metodología y fórmulas de cálculo | ClaroCalc</title>
+<meta name="description" content="Cómo calcula ClaroCalc: fórmulas exactas de cada calculadora, qué supuestos hace, qué no incluye y por qué el resultado real puede diferir. Con fuentes oficiales.">
+<link rel="canonical" href="https://utilix.uno/metodologia.html">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Metodología y fórmulas de cálculo | ClaroCalc">
+<meta property="og:description" content="Cómo calcula ClaroCalc: fórmulas, supuestos, límites y fuentes oficiales de cada calculadora.">
+<meta property="og:image" content="assets/img/og-image.png">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css?v=20260825">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2829981614170975" crossorigin="anonymous"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Metodología y fórmulas de cálculo — ClaroCalc",
+  "description": "Explicación de las fórmulas, supuestos y límites de cada calculadora de ClaroCalc.",
+  "url": "https://utilix.uno/metodologia.html",
+  "dateModified": "2026-09-05",
+  "isPartOf": { "@type": "WebSite", "name": "ClaroCalc", "url": "https://utilix.uno/" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Calculadoras", "item": "https://utilix.uno/" },
+    { "@type": "ListItem", "position": 2, "name": "Metodología", "item": "https://utilix.uno/metodologia.html" }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#contenido">Ir al contenido</a>
+
+<header class="site-header">
+  <div class="container-wide header-row">
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true">◆</span>
+      <span class="brand-name">ClaroCalc</span>
+    </a>
+    <nav class="header-nav" aria-label="Calculadoras">
+      <a href="hipoteca.html">Hipoteca</a>
+      <a href="interes-compuesto.html">Interés compuesto</a>
+      <a href="prestamo-personal.html">Préstamo</a>
+      <a href="jubilacion.html">Jubilación</a>
+      <a href="sueldo-neto.html">Sueldo neto</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenido">
+  <section class="calc-hero container-wide">
+    <p class="breadcrumb"><a href="index.html">Calculadoras</a> / Metodología</p>
+    <h1>Metodología: cómo calcula ClaroCalc</h1>
+    <p class="hero-sub">La fórmula, los supuestos y los límites exactos de cada calculadora — para que sepas qué hay detrás del número que ves en pantalla.</p>
+  </section>
+
+  <div class="container-wide">
+    <section class="explain-section">
+      <div class="explain-copy">
+        <p>Esta página reúne, calculadora por calculadora, la fórmula matemática que usamos, qué datos asumimos cuando no los pides explícitamente, qué queda fuera del cálculo y por qué tu resultado real (el de tu banco, tu nómina o tu entidad financiera) puede ser distinto. Ningún resultado de ClaroCalc constituye asesoramiento financiero, fiscal ni de inversión.</p>
+      </div>
+    </section>
+
+    <section class="explain-section">
+      <h2 id="hipoteca">Hipoteca</h2>
+      <div class="explain-copy">
+        <p>Usa el <strong>sistema de amortización francés</strong>, el estándar en la banca española: cuota constante, con la proporción de capital e intereses cambiando cada mes.</p>
+        <div class="formula-box">cuota = P × r / (1 − (1 + r)<sup>−n</sup>)</div>
+        <p><strong>P</strong> = importe del préstamo · <strong>r</strong> = interés mensual (anual ÷ 12 ÷ 100) · <strong>n</strong> = número de cuotas (años × 12).</p>
+        <p><strong>Qué no incluye:</strong> comisión de apertura, seguros vinculados (hogar, vida), gastos de notaría, registro o tasación, ni las revisiones reales del tipo en una hipoteca variable o mixta — usa el tipo que introduzcas como si fuera constante todo el plazo.</p>
+        <p><a href="hipoteca.html">Ir a la calculadora de hipoteca →</a></p>
+      </div>
+    </section>
+
+    <section class="explain-section">
+      <h2 id="interes-compuesto">Interés compuesto</h2>
+      <div class="explain-copy">
+        <p>Calcula el crecimiento de un capital con aportaciones periódicas, capitalizando mensual o anualmente según elijas.</p>
+        <div class="formula-box">VF = C × (1 + r)<sup>n</sup> + A × ((1 + r)<sup>n</sup> − 1) / r</div>
+        <p><strong>C</strong> = capital inicial · <strong>A</strong> = aportación periódica · <strong>r</strong> = interés por periodo · <strong>n</strong> = número de periodos.</p>
+        <p><strong>Qué no incluye:</strong> inflación, impuestos sobre las ganancias al retirarlas, ni comisiones de gestión de ningún producto. La rentabilidad que introduces es un supuesto tuyo, no una previsión ni una garantía de ClaroCalc.</p>
+        <p><a href="interes-compuesto.html">Ir a la calculadora de interés compuesto →</a></p>
+      </div>
+    </section>
+
+    <section class="explain-section">
+      <h2 id="prestamo-personal">Préstamo personal</h2>
+      <div class="explain-copy">
+        <p>Misma amortización francesa que la hipoteca, aplicada al plazo en meses habitual de un préstamo personal.</p>
+        <div class="formula-box">cuota = P × r / (1 − (1 + r)<sup>−m</sup>)</div>
+        <p><strong>P</strong> = importe · <strong>r</strong> = TIN mensual (TIN anual ÷ 12 ÷ 100) · <strong>m</strong> = número de cuotas.</p>
+        <p>La <strong>TAE aproximada</strong> se obtiene anualizando el tipo mensual: <code>(1 + r)¹² − 1</code>. <strong>No es la TAE oficial de ninguna entidad</strong> — la TAE real incluye comisiones (apertura, estudio) y otros costes que esta fórmula no conoce, así que siempre será igual o algo mayor que la que ves aquí.</p>
+        <p><a href="prestamo-personal.html">Ir a la calculadora de préstamo personal →</a></p>
+      </div>
+    </section>
+
+    <section class="explain-section">
+      <h2 id="jubilacion">Jubilación / ahorro objetivo</h2>
+      <div class="explain-copy">
+        <p>Es una <strong>simulación matemática</strong> de interés compuesto aplicada a tu ahorro y aportaciones mensuales — no una previsión de rentabilidad ni un plan de pensiones.</p>
+        <div class="formula-box">Capital = A₀ × (1 + r)<sup>N</sup> + A × ((1 + r)<sup>N</sup> − 1) / r</div>
+        <p><strong>A₀</strong> = ahorro actual · <strong>A</strong> = aportación mensual · <strong>r</strong> = rentabilidad mensual del escenario que elijas · <strong>N</strong> = meses hasta la edad de jubilación.</p>
+        <p><strong>Qué no incluye:</strong> la pensión pública de la Seguridad Social, la inflación, ni impuestos. El porcentaje de rentabilidad es un <strong>escenario que tú eliges</strong>, nunca una rentabilidad esperable o garantizada — rentabilidades pasadas de cualquier producto no garantizan resultados futuros.</p>
+        <p><a href="jubilacion.html">Ir a la calculadora de jubilación →</a></p>
+      </div>
+    </section>
+
+    <section class="explain-section">
+      <h2 id="sueldo-neto">Sueldo neto (bruto a neto)</h2>
+      <div class="explain-copy">
+        <p><strong>Esta es la calculadora que más simplifica</strong> y la que requiere más cuidado al leerla. Resta del bruto la cotización del trabajador a la Seguridad Social y una estimación de IRPF calculada de forma progresiva por tramos.</p>
+        <div class="formula-box">Neto anual = Bruto − Seguridad Social − IRPF</div>
+        <p>La Seguridad Social se calcula como un 6,35% del bruto (contingencias comunes, desempleo y formación profesional) hasta una base máxima de cotización anual. El IRPF se aplica sobre el bruto menos la Seguridad Social, unos gastos deducibles estándar y el mínimo personal y familiar, con una <strong>escala general de tramos</strong> y un ajuste orientativo según la comunidad autónoma.</p>
+        <p><strong>Datos de referencia:</strong> tramos, mínimos y tipo de cotización con validez orientada al ejercicio 2026. <strong>Qué no incluye:</strong> tu convenio colectivo, pagas extra no prorrateadas, retribución en especie, planes de pensiones, embargos, ni la tabla autonómica exacta de IRPF de tu comunidad — usamos un ajuste aproximado, no la normativa oficial de cada una.</p>
+        <p>Para consultar los tramos y tipos oficiales vigentes, la fuente autorizada es la <a href="https://sede.agenciatributaria.gob.es" target="_blank" rel="noopener">sede electrónica de la Agencia Tributaria (AEAT)</a> para el IRPF, y la <a href="https://www.seg-social.es" target="_blank" rel="noopener">Seguridad Social</a> para tipos de cotización.</p>
+        <p><a href="sueldo-neto.html">Ir a la calculadora de sueldo neto →</a></p>
+      </div>
+    </section>
+
+    <section class="explain-section">
+      <h2>Fuentes oficiales</h2>
+      <div class="explain-copy">
+        <p>Para verificar por tu cuenta cualquier dato normativo, fiscal o laboral relacionado con estas calculadoras, estos son los organismos oficiales competentes en España:</p>
+        <ul style="margin: .6rem 0 0 1.2rem; color: var(--text-muted);">
+          <li><a href="https://sede.agenciatributaria.gob.es" target="_blank" rel="noopener">Agencia Tributaria (AEAT)</a> — IRPF y normativa fiscal.</li>
+          <li><a href="https://www.seg-social.es" target="_blank" rel="noopener">Seguridad Social</a> — cotizaciones y bases de cotización.</li>
+          <li><a href="https://www.bde.es" target="_blank" rel="noopener">Banco de España</a> — tipos de referencia e información hipotecaria.</li>
+          <li><a href="https://www.boe.es" target="_blank" rel="noopener">Boletín Oficial del Estado (BOE)</a> — normativa publicada.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="explain-section">
+      <h2>Limitación general</h2>
+      <div class="explain-copy">
+        <p>Todas las calculadoras de ClaroCalc dan <strong>resultados orientativos</strong>, calculados con fórmulas financieras estándar y los supuestos descritos arriba. No sustituyen a tu banco, tu nómina real, un simulador oficial de un organismo público ni el consejo de un profesional cualificado antes de tomar una decisión económica importante.</p>
+      </div>
+    </section>
+  </div>
+
+  <div class="ad-slot container-wide" data-ad-slot>
+    <span class="ad-label">ANUNCIO</span>
+    <!-- PEGA AQUÍ TU CÓDIGO DE ADSENSE -->
+  </div>
+
+  <section class="more-section container-wide">
+    <h2>Calculadoras</h2>
+    <div class="more-grid">
+      <a class="more-card" href="hipoteca.html"><span class="card-icon" aria-hidden="true">🏠</span><h3>Hipoteca</h3><p>Cuota mensual y cuadro de amortización.</p></a>
+      <a class="more-card" href="interes-compuesto.html"><span class="card-icon" aria-hidden="true">📈</span><h3>Interés compuesto</h3><p>Cuánto crece tu dinero con aportaciones periódicas.</p></a>
+      <a class="more-card" href="prestamo-personal.html"><span class="card-icon" aria-hidden="true">💳</span><h3>Préstamo personal</h3><p>Cuota, coste total y TAE aproximada.</p></a>
+      <a class="more-card" href="jubilacion.html"><span class="card-icon" aria-hidden="true">🌅</span><h3>Jubilación</h3><p>Cuánto capital puedes reunir de aquí a jubilarte.</p></a>
+      <a class="more-card" href="sueldo-neto.html"><span class="card-icon" aria-hidden="true">💶</span><h3>Sueldo neto</h3><p>De salario bruto a neto mensual, con IRPF y SS.</p></a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container-wide">
+    <div class="footer-cols">
+      <div>
+        <h4>ClaroCalc</h4>
+        <p>Calculadoras financieras claras, gratis y sin registro. Todo el cálculo ocurre en tu navegador.</p>
+      </div>
+      <div>
+        <h4>Calculadoras</h4>
+        <ul>
+          <li><a href="hipoteca.html">Hipoteca</a></li>
+          <li><a href="interes-compuesto.html">Interés compuesto</a></li>
+          <li><a href="prestamo-personal.html">Préstamo personal</a></li>
+          <li><a href="jubilacion.html">Jubilación</a></li>
+          <li><a href="sueldo-neto.html">Sueldo neto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="metodologia.html">Metodología</a></li>
+          <li><a href="privacidad.html">Privacidad</a></li>
+          <li><a href="aviso-legal.html">Aviso legal</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="disclaimer-line">© 2026 ClaroCalc. Los resultados son estimaciones orientativas y no constituyen asesoramiento financiero, fiscal ni de inversión.</p>
+  </div>
+</footer>
+
+<script defer src="lib/manifest.js?v=20260824"></script>
+<script defer src="main.js?v=20260824"></script>
+</body>
+</html>

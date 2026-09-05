@@ -111,12 +111,12 @@
             </div>
           </div>
           <div class="field">
-            <label class="field-label" for="rentabilidad">Rentabilidad anual esperada</label>
+            <label class="field-label" for="rentabilidad">Rentabilidad anual (escenario)</label>
             <div class="input-suffix-wrap">
               <input type="number" id="rentabilidad" class="text-input" value="5" min="0" max="20" step="0.1">
               <span class="input-suffix">%</span>
             </div>
-            <p class="field-hint">Ninguna rentabilidad futura está garantizada; usa una cifra conservadora si prefieres un resultado prudente.</p>
+            <p class="field-hint">Es un escenario que tú eliges, no una rentabilidad esperable ni garantizada; usa una cifra conservadora si prefieres un resultado prudente.</p>
           </div>
           <p class="error-msg" id="errorMsg">Revisa los valores: la edad de jubilación debe ser mayor que la edad actual, y el resto deben ser números positivos.</p>
         </div>
@@ -164,7 +164,8 @@
       <p>El cálculo es el mismo principio que el interés compuesto: tu ahorro actual y tus aportaciones mensuales crecen cada mes con la rentabilidad esperada, y esos intereses generan a su vez más intereses.</p>
       <div class="formula-box">Capital = A₀ × (1 + r)<sup>N</sup> + A × ((1 + r)<sup>N</sup> − 1) / r</div>
       <p>Donde <strong>A₀</strong> es tu ahorro actual, <strong>A</strong> tu aportación mensual, <strong>r</strong> la rentabilidad mensual esperada (la anual dividida entre 12 y entre 100) y <strong>N</strong> el número de meses hasta la edad de jubilación elegida.</p>
-      <p>Este cálculo <strong>no incluye la pensión pública</strong> ni ningún otro ingreso: es solo la proyección de tu ahorro y aportaciones privadas, a modo de referencia orientativa.</p>
+      <p>Este cálculo <strong>no incluye la pensión pública</strong> ni ningún otro ingreso: es solo la proyección de tu ahorro y aportaciones privadas, a modo de referencia orientativa. Es una <strong>simulación matemática</strong>, no una previsión: el resultado depende por completo del escenario de rentabilidad que elijas, que tú decides, no nosotros.</p>
+      <p><strong>Ejemplo — el efecto de empezar antes:</strong> con 8.000 € ahorrados, 200 €/mes y un escenario del 5% anual, si empiezas a los <strong>35 años</strong> llegarías a los 67 con <strong>228.449 €</strong> (de los que solo 84.800 € son aportación tuya). Empezando 10 años más tarde, a los <strong>45 años</strong>, llegarías a <strong>119.849 €</strong> — casi la mitad, aunque solo dejas de aportar 24.000 € menos. La diferencia la hace el tiempo que el interés compuesto tiene para trabajar, no cuánto aportas cada mes.</p>
     </div>
   </section>
 
@@ -240,6 +241,7 @@
       <div>
         <h4>Legal</h4>
         <ul>
+          <li><a href="metodologia.html">Metodología</a></li>
           <li><a href="privacidad.html">Privacidad</a></li>
           <li><a href="aviso-legal.html">Aviso legal</a></li>
         </ul>
